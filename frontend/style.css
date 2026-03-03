@@ -1,0 +1,123 @@
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    background: #f0f2f5; 
+    display: flex; 
+    justify-content: center; 
+    padding: 20px; 
+    margin: 0;
+}
+.container { 
+    background: white; 
+    padding: 25px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+    text-align: center; 
+    max-width: 850px; 
+    width: 100%;
+}
+
+.controls { 
+    margin: 20px 0; 
+    display: flex; 
+    gap: 12px; 
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap; 
+}
+.color-picker { display: flex; gap: 8px; }
+.color-btn { 
+    width: 42px; 
+    height: 42px; 
+    border-radius: 50%; 
+    border: 3px solid transparent; 
+    cursor: pointer; 
+    transition: all 0.2s; 
+}
+.color-btn.active { 
+    transform: scale(1.25); 
+    border-color: #333; 
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.1); 
+}
+
+.action-btn { 
+    padding: 12px 24px; 
+    background: #2c3e50; 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 15px; 
+    font-weight: 500;
+    transition: background 0.2s;
+}
+.action-btn:hover { background: #34495e; }
+.action-btn.reset { background: #e74c3c; }
+.action-btn.reset:hover { background: #c0392b; }
+
+.cube-layout { 
+    display: grid; 
+    grid-template-columns: repeat(4, 90px); 
+    gap: 12px; 
+    margin: 25px auto; 
+    justify-content: center;
+}
+.spacer { visibility: hidden; width: 90px; }
+
+.face { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 3px; 
+    background: #2c3e50; 
+    padding: 4px; 
+    border-radius: 6px; 
+    width: 90px; 
+    height: 90px; 
+}
+.sticker { 
+    background-color: #ecf0f1; 
+    cursor: pointer; 
+    border-radius: 3px; 
+    transition: transform 0.1s;
+}
+.sticker:hover { transform: scale(1.05); }
+
+.sticker.U { background-color: white; border: 1px solid #bbb; }
+.sticker.R { background-color: #009E60; }
+.sticker.F { background-color: #C41E3A; }
+.sticker.D { background-color: #FFD500; }
+.sticker.L { background-color: #FF5800; }
+.sticker.B { background-color: #0051BA; }
+
+.result-box { 
+    margin-top: 25px; 
+    padding: 20px; 
+    background: #f8f9fa; 
+    border-radius: 8px; 
+    text-align: left; 
+    border-left: 4px solid #3498db;
+}
+.hidden { display: none; }
+#steps-container { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+    margin-top: 15px; 
+}
+.step-badge { 
+    background: #3498db; 
+    color: white; 
+    padding: 6px 12px; 
+    border-radius: 6px; 
+    font-weight: 600; 
+    font-family: monospace;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .cube-layout { 
+        grid-template-columns: repeat(4, 70px); 
+        gap: 8px; 
+    }
+    .face { width: 70px; height: 70px; }
+    .color-btn { width: 36px; height: 36px; }
+}
