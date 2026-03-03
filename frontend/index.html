@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolutor de Cubo Rubik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎲 Resolutor de Cubo Rubik</h1>
+        <p>Selecciona un color y pinta las caras de tu cubo tal como lo ves.</p>
+        
+        <div class="controls">
+            <div class="color-picker">
+                <button class="color-btn active" data-color="U" style="background-color: white; border: 1px solid #ccc;"></button>
+                <button class="color-btn" data-color="R" style="background-color: #009E60;"></button>
+                <button class="color-btn" data-color="F" style="background-color: #C41E3A;"></button>
+                <button class="color-btn" data-color="D" style="background-color: #FFD500;"></button>
+                <button class="color-btn" data-color="L" style="background-color: #FF5800;"></button>
+                <button class="color-btn" data-color="B" style="background-color: #0051BA;"></button>
+            </div>
+            <button id="solveBtn" class="action-btn">✨ Resolver Cubo</button>
+            <button id="resetBtn" class="action-btn reset">🔄 Reiniciar</button>
+        </div>
+
+        <div class="cube-layout">
+            <div class="face" id="face-U"></div>
+            <div class="spacer"></div>
+            <div class="face" id="face-L"></div>
+            <div class="face" id="face-F"></div>
+            <div class="face" id="face-R"></div>
+            <div class="face" id="face-B"></div>
+            <div class="spacer"></div>
+            <div class="face" id="face-D"></div>
+        </div>
+
+        <div id="result" class="result-box hidden">
+            <h3>✅ Solución encontrada:</h3>
+            <p id="solution-text"></p>
+            <div id="steps-container"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
