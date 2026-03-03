@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: rubik-api
+    ports:
+      - "5000:5000"
+    networks:
+      - rubik-net
+    restart: unless-stopped
+
+  frontend:
+    image: nginx:alpine
+    container_name: rubik-ui
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+    networks:
+      - rubik-net
+    restart: unless-stopped
+
+networks:
+  rubik-net:
+    driver: bridge
