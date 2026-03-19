@@ -3,44 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resolutor de Cubo Rubik</title>
+    <title>Resolutor 3D de Cubo Rubik</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Three.js desde CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>🎲 Resolutor de Cubo Rubik</h1>
-        <p>Selecciona un color y pinta las caras de tu cubo tal como lo ves.</p>
-        
-        <div class="controls">
+    <div class="app-container">
+        <!-- Panel de control -->
+        <div class="control-panel">
+            <h1>🎲 Resolutor 3D de Cubo Rubik</h1>
+            <p class="instructions">
+                🖱️ <strong>Arrastra</strong> para rotar la vista | 
+                🎨 <strong>Selecciona color</strong> y haz click en las caras |
+                🔧 <strong>Rueda del mouse</strong> para zoom
+            </p>
+            
+            <!-- Selector de colores -->
             <div class="color-picker">
-                <button class="color-btn active" data-color="U" style="background-color: white; border: 1px solid #ccc;"></button>
-                <button class="color-btn" data-color="R" style="background-color: #009E60;"></button>
-                <button class="color-btn" data-color="F" style="background-color: #C41E3A;"></button>
-                <button class="color-btn" data-color="D" style="background-color: #FFD500;"></button>
-                <button class="color-btn" data-color="L" style="background-color: #FF5800;"></button>
-                <button class="color-btn" data-color="B" style="background-color: #0051BA;"></button>
+                <button class="color-btn active" data-color="U" style="background-color: white;" title="Up (Blanco)"></button>
+                <button class="color-btn" data-color="R" style="background-color: #009E60;" title="Right (Verde)"></button>
+                <button class="color-btn" data-color="F" style="background-color: #C41E3A;" title="Front (Rojo)"></button>
+                <button class="color-btn" data-color="D" style="background-color: #FFD500;" title="Down (Amarillo)"></button>
+                <button class="color-btn" data-color="L" style="background-color: #FF5800;" title="Left (Naranja)"></button>
+                <button class="color-btn" data-color="B" style="background-color: #0051BA;" title="Back (Azul)"></button>
             </div>
-            <button id="solveBtn" class="action-btn">✨ Resolver Cubo</button>
-            <button id="resetBtn" class="action-btn reset">🔄 Reiniciar</button>
+            
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button id="solveBtn" class="btn btn-solve">✨ Resolver Cubo</button>
+                <button id="resetBtn" class="btn btn-reset">🔄 Reiniciar</button>
+                <button id="scrambleBtn" class="btn btn-scramble">🔀 Mezclar</button>
+            </div>
+            
+            <!-- Estado actual -->
+            <div class="status-info">
+                <span id="stickersCount">Stickers pintados: 0/54</span>
+                <span id="cubeStatus">Estado: ⚠️ Incompleto</span>
+            </div>
         </div>
-
-        <div class="cube-layout">
-            <div class="face" id="face-U"></div>
-            <div class="spacer"></div>
-            <div class="face" id="face-L"></div>
-            <div class="face" id="face-F"></div>
-            <div class="face" id="face-R"></div>
-            <div class="face" id="face-B"></div>
-            <div class="spacer"></div>
-            <div class="face" id="face-D"></div>
+        
+        <!-- Visor 3D del cubo -->
+        <div class="cube-viewer" id="cubeViewer"></div>
+        
+        <!-- Panel de solución -->
+        <div id="solutionPanel" class="solution-panel hidden">
+            <h3>✅ Solución encontrada</h3>
+            <p id="solutionInfo"></p>
+            <div id="stepsContainer"></div>
+            <button id="closeSolution" class="btn btn-close">Cerrar</button>
         </div>
-
-        <div id="result" class="result-box hidden">
-            <h3>✅ Solución encontrada:</h3>
-            <p id="solution-text"></p>
-            <div id="steps-container"></div>
+        
+        <!-- Loading overlay -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="spinner"></div>
+            <p>Calculando solución...</p>
         </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
